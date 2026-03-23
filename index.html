@@ -15,10 +15,24 @@
 	<h1 style="color: darkred;">道法自然</h1>
 	<a href="javascript:editPage()"><img src="laozi.jpg"></a>
 </article>
+<nav id="editPageNav">
+	<button onclick="cancelEdit()">x</button>
+</nav>
+<style>
+	#editPageNav {
+		display: none;
+	}
+</style>
 <style id="editStyleSheet">
+	#editPageNav {
+		display: block;
+		position: fixed;
+		bottom: 1rem;
+		right: 1rem;
+	}
 	style, script {
 		display: block;
-		whitespace: pre;
+		white-space: pre;
 		font-family: monospace;
 	}
 </style>
@@ -29,6 +43,12 @@
 	function editPage() {
 		if (editing) return;
 		editStyleSheet.disabled = false;
+		editing = true;
+	}
+	function cancelEdit() {
+		if (!editing) return;
+		editStyleSheet.disabled = true;
+		editing = false;
 	}
 </script>
 <script src="https://unpkg.com/@isomorphic-git/lightning-fs"></script>
