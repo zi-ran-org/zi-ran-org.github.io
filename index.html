@@ -45,7 +45,7 @@
 		if (editing) return;
 		editStyleSheet.disabled = false;
 		editing = true;
-		document.body.children.forEach(child => {child.contenteditable = true});
+		document.body.children.forEach(child => {child.contentEditable = true});
 	}
 	function cancelEdit() {
 		if (!editing) return;
