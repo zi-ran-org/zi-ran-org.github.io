@@ -16,7 +16,8 @@
 	<a href="javascript:editPage()"><img src="laozi.jpg"></a>
 </article>
 <nav id="editPageNav">
-	<button onclick="cancelEdit()">x</button>
+	<button onclick="cancelEdit()">&times;</button>
+	<button onclick="commitEdit()">💾</button>
 </nav>
 <style>
 	#editPageNav {
@@ -44,11 +45,17 @@
 		if (editing) return;
 		editStyleSheet.disabled = false;
 		editing = true;
+		document.body.children.forEach(child => {child.contenteditable = true});
 	}
 	function cancelEdit() {
 		if (!editing) return;
 		editStyleSheet.disabled = true;
 		editing = false;
+		document.body.children.forEach(child => {child.contentEditable = false});
+	}
+	function saveEdit() {
+		cancelEdit();
+		localStorage.setItem('editPageState', document.rootElement.outerHTML);
 	}
 </script>
 <script src="https://unpkg.com/@isomorphic-git/lightning-fs"></script>
