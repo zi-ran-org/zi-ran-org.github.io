@@ -13,5 +13,28 @@
 	人法地地法天天法道
 	</p>
 	<h1 style="color: darkred;">道法自然</h1>
-	<img src="laozi.jpg">
+	<a href="javascript:editPage()"><img src="laozi.jpg"></a>
 </article>
+<style id="editStyleSheet">
+	style, script {
+		display: block;
+		whitespace: pre;
+		font-family: monospace;
+	}
+</style>
+<script>
+	window.editing = false;
+	const editStyleSheet = document.getElementById('editStyleSheet')
+	editStyleSheet.disabled = true;
+	function editPage() {
+		if (editing) return;
+		editStyleSheet.disabled = false;
+	}
+</script>
+<script src="https://unpkg.com/@isomorphic-git/lightning-fs"></script>
+<script src="https://unpkg.com/isomorphic-git"></script>
+<script type="module">
+import http from 'https://unpkg.com/isomorphic-git/http/web/index.js'
+window.fs = new LightningFS('fs')
+window.pfs = window.fs.promises
+</script>
