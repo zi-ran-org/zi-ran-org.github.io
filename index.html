@@ -45,13 +45,13 @@
 		if (editing) return;
 		editStyleSheet.disabled = false;
 		editing = true;
-		document.body.children.forEach(child => {child.contentEditable = true});
+		for (const child of document.body.children) child.contentEditable = true;
 	}
 	function cancelEdit() {
 		if (!editing) return;
 		editStyleSheet.disabled = true;
 		editing = false;
-		document.body.children.forEach(child => {child.contentEditable = false});
+		for (const child of document.body.children) child.contentEditable = false;
 	}
 	function saveEdit() {
 		cancelEdit();
