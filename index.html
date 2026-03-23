@@ -39,6 +39,8 @@
 </style>
 <script>
 	window.editing = false;
+	const lastSavedState = localStorage.getItem('editPageState');
+	if (document.rootElement.outerHTML !== lastSavedState) document.rootElement.outerHTML = lastSavedState;
 	const editStyleSheet = document.getElementById('editStyleSheet')
 	editStyleSheet.disabled = true;
 	function editPage() {
@@ -46,6 +48,10 @@
 		editStyleSheet.disabled = false;
 		editing = true;
 		for (const child of document.body.children) child.contentEditable = true;
+	}
+	function discardEdit() {
+		cancelEdit();
+		document.rootElement.outerHTML = localStorage.getItem('editPageState');
 	}
 	function cancelEdit() {
 		if (!editing) return;
