@@ -1,8 +1,125 @@
 <!doctype html>
 <meta charset="utf-8">
+<meta name="cms-repo" content="https://github.com/zi-ran-org/zi-ran-org.github.io.git">
 <title>自然</title>
-<article style="writing-mode: vertical-rl;text-orientation: upright;
-	padding:2em;margin:auto;width:max-content;">
+
+<style id="utility-styles">
+	/* Grid */
+	.grid { display: grid; }
+	.cols-1 { grid-template-columns: repeat(1, 1fr); }
+	.cols-2 { grid-template-columns: repeat(2, 1fr); }
+	.cols-3 { grid-template-columns: repeat(3, 1fr); }
+	.cols-4 { grid-template-columns: repeat(4, 1fr); }
+	.col-span-2 { grid-column: span 2; }
+	.col-span-3 { grid-column: span 3; }
+	.col-span-4 { grid-column: span 4; }
+	.rows-2 { grid-template-rows: repeat(2, 1fr); }
+	.rows-3 { grid-template-rows: repeat(3, 1fr); }
+	.row-span-2 { grid-row: span 2; }
+	.row-span-3 { grid-row: span 3; }
+
+	/* Flex */
+	.flex { display: flex; }
+	.flex-col { flex-direction: column; }
+	.flex-wrap { flex-wrap: wrap; }
+	.flex-1 { flex: 1; }
+	.items-start { align-items: flex-start; }
+	.items-center { align-items: center; }
+	.items-end { align-items: flex-end; }
+	.justify-center { justify-content: center; }
+	.justify-between { justify-content: space-between; }
+	.justify-end { justify-content: flex-end; }
+
+	/* Gap */
+	.gap-1 { gap: 0.25rem; }
+	.gap-2 { gap: 0.5rem; }
+	.gap-3 { gap: 0.75rem; }
+	.gap-4 { gap: 1rem; }
+	.gap-6 { gap: 1.5rem; }
+	.gap-8 { gap: 2rem; }
+
+	/* Padding */
+	.p-0 { padding: 0; }
+	.p-1 { padding: 0.25rem; }
+	.p-2 { padding: 0.5rem; }
+	.p-3 { padding: 0.75rem; }
+	.p-4 { padding: 1rem; }
+	.p-6 { padding: 1.5rem; }
+	.p-8 { padding: 2rem; }
+	.px-1 { padding-left: 0.25rem; padding-right: 0.25rem; }
+	.px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+	.px-4 { padding-left: 1rem; padding-right: 1rem; }
+	.px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+	.px-8 { padding-left: 2rem; padding-right: 2rem; }
+	.py-1 { padding-top: 0.25rem; padding-bottom: 0.25rem; }
+	.py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+	.py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+	.py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+	.py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+
+	/* Margin */
+	.m-0 { margin: 0; }
+	.m-1 { margin: 0.25rem; }
+	.m-2 { margin: 0.5rem; }
+	.m-4 { margin: 1rem; }
+	.m-8 { margin: 2rem; }
+	.mx-auto { margin-left: auto; margin-right: auto; }
+	.mx-1 { margin-left: 0.25rem; margin-right: 0.25rem; }
+	.mx-2 { margin-left: 0.5rem; margin-right: 0.5rem; }
+	.mx-4 { margin-left: 1rem; margin-right: 1rem; }
+	.mx-8 { margin-left: 2rem; margin-right: 2rem; }
+	.my-1 { margin-top: 0.25rem; margin-bottom: 0.25rem; }
+	.my-2 { margin-top: 0.5rem; margin-bottom: 0.5rem; }
+	.my-4 { margin-top: 1rem; margin-bottom: 1rem; }
+	.my-8 { margin-top: 2rem; margin-bottom: 2rem; }
+
+	/* Typography */
+	.text-xs { font-size: 0.75rem; }
+	.text-sm { font-size: 0.875rem; }
+	.text-base { font-size: 1rem; }
+	.text-lg { font-size: 1.125rem; }
+	.text-xl { font-size: 1.25rem; }
+	.text-2xl { font-size: 1.5rem; }
+	.text-3xl { font-size: 1.875rem; }
+	.font-normal { font-weight: 400; }
+	.font-semibold { font-weight: 600; }
+	.font-bold { font-weight: 700; }
+	.text-left { text-align: left; }
+	.text-center { text-align: center; }
+	.text-right { text-align: right; }
+	.leading-tight { line-height: 1.25; }
+	.leading-normal { line-height: 1.5; }
+	.leading-relaxed { line-height: 1.75; }
+
+	/* Colors */
+	.text-muted { color: #64748b; }
+	.text-primary { color: #2563eb; }
+	.text-danger { color: #dc2626; }
+	.text-success { color: #16a34a; }
+	.bg-light { background: #f8fafc; }
+	.bg-dark { background: #1e293b; color: #e2e8f0; }
+	.bg-primary { background: #2563eb; color: #fff; }
+	.bg-muted { background: #f1f5f9; }
+
+	/* Display & sizing */
+	.block { display: block; }
+	.inline-block { display: inline-block; }
+	.hidden { display: none; }
+	.w-full { width: 100%; }
+	.h-full { height: 100%; }
+	.max-w-sm { max-width: 24rem; }
+	.max-w-md { max-width: 28rem; }
+	.max-w-lg { max-width: 32rem; }
+	.max-w-xl { max-width: 36rem; }
+
+	/* Borders & rounding */
+	.rounded { border-radius: 0.25rem; }
+	.rounded-lg { border-radius: 0.5rem; }
+	.border { border: 1px solid #e2e8f0; }
+	.border-light { border: 1px solid #f1f5f9; }
+</style>
+
+<article style="writing-mode: vertical-rl; text-orientation: upright; padding: 2em; margin: auto; width: max-content;">
 	<p>
 	有物混成先天地生<br>
 	寂兮寥兮獨立不改周行而不殆可以為天下母<br>
@@ -13,61 +130,1806 @@
 	人法地地法天天法道
 	</p>
 	<h1 style="color: darkred;">道法自然</h1>
-	<a href="javascript:editPage()"><img src="laozi.jpg"></a>
+	<a href="javascript:enterEditMode()"><img src="laozi.jpg"><p>✏️</p></a>
 </article>
-<nav id="editPageNav">
-	<button onclick="cancelEdit()">&times;</button>
-	<button onclick="saveEdit()">💾</button>
-</nav>
-<style>
-	#editPageNav {
-		display: none;
+
+<template>
+	<section class="p-8 my-8">
+		<h2>Section Title</h2>
+		<p>Section content goes here.</p>
+	</section>
+</template>
+
+<template>
+	<div class="flex gap-8 p-8">
+		<div class="flex-1">
+			<h3>Column One</h3>
+			<p>Left column content.</p>
+		</div>
+		<div class="flex-1">
+			<h3>Column Two</h3>
+			<p>Right column content.</p>
+		</div>
+	</div>
+</template>
+
+<template>
+	<figure class="my-8 mx-auto text-center">
+		<img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200'%3E%3Crect fill='%23e2e8f0' width='300' height='200'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2394a3b8' font-size='18'%3EImage%3C/text%3E%3C/svg%3E" alt="Placeholder">
+		<figcaption>Caption text</figcaption>
+	</figure>
+</template>
+
+<style id="cms-edit-styles" disabled>
+	/* --- Container outlines --- */
+	article, section, div, nav, main, header, footer, aside,
+	ul, ol, dl, form, fieldset, details, figure, figcaption {
+		outline: 1px dashed rgba(0,0,0,0.15);
+		outline-offset: -1px;
+		min-height: 1em;
+		min-width: 1em;
 	}
-</style>
-<style id="editStyleSheet">
-	#editPageNav {
-		display: block;
-		position: fixed;
-		bottom: 1rem;
-		right: 1rem;
+	/* Exclude CMS UI from container outlines */
+	[data-cms], [data-cms] * {
+		outline: none;
+		min-height: unset;
+		min-width: unset;
 	}
-	style, script {
-		display: block;
+
+	/* --- Selected element --- */
+	[data-cms-selected] {
+		outline: 2px solid #3b82f6 !important;
+		outline-offset: 0px;
+		cursor: grab;
+	}
+
+	/* --- Editing element --- */
+	[data-cms-editing] {
+		outline: 2px solid #10b981 !important;
+		outline-offset: 0px;
+	}
+
+	/* --- Style/script visibility in edit mode --- */
+	style:not(#cms-edit-styles) {
+		display: block !important;
 		white-space: pre;
-		font-family: monospace;
+		font-family: ui-monospace, 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+		font-size: 13px;
+		background: #1e1e2e;
+		color: #cdd6f4;
+		padding: 1em;
+		border: 1px solid #45475a;
+		border-radius: 4px;
+		tab-size: 2;
+		margin: 1em 0;
+	}
+	script:not([src]):not([type="module"]) {
+		display: block !important;
+		white-space: pre;
+		font-family: ui-monospace, 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+		font-size: 13px;
+		background: #1e1e2e;
+		color: #cdd6f4;
+		padding: 1em;
+		border: 1px solid #45475a;
+		border-radius: 4px;
+		tab-size: 2;
+		margin: 1em 0;
+	}
+
+	/* --- Drop indicators --- */
+	[data-cms-drop-before] {
+		border-top: 3px solid #3b82f6 !important;
+	}
+	[data-cms-drop-after] {
+		border-bottom: 3px solid #3b82f6 !important;
+	}
+	[data-cms-drop-inside] {
+		background: rgba(59,130,246,0.08) !important;
+	}
+
+	/* --- FAB --- */
+	[data-cms="fab"] {
+		position: fixed;
+		bottom: 1.5rem;
+		right: 1.5rem;
+		z-index: 999999;
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+		align-items: flex-end;
+	}
+	[data-cms="fab"] button {
+		border: none;
+		color: #fff;
+		padding: 0.5rem 1rem;
+		border-radius: 2rem;
+		font: 600 13px/1.4 system-ui, sans-serif;
+		cursor: pointer;
+		box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+		transition: opacity 0.15s;
+	}
+	[data-cms="fab"] button:hover { opacity: 0.85; }
+	[data-cms="fab"] .cms-fab-publish { background: #10b981; }
+	[data-cms="fab"] .cms-fab-save { background: #3b82f6; }
+	[data-cms="fab"] .cms-fab-discard { background: #ef4444; }
+	[data-cms="fab"] .cms-fab-blocks { background: #6366f1; }
+
+	/* --- Toolbar --- */
+	[data-cms="toolbar"] {
+		position: fixed;
+		z-index: 999998;
+		display: flex;
+		align-items: center;
+		gap: 2px;
+		background: #1e293b;
+		color: #e2e8f0;
+		padding: 3px 6px;
+		border-radius: 4px;
+		font: 12px/1.4 ui-monospace, 'SF Mono', monospace;
+		box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+		white-space: nowrap;
+		pointer-events: auto;
+		user-select: none;
+	}
+	[data-cms="toolbar"] button {
+		background: transparent;
+		border: 1px solid transparent;
+		color: #94a3b8;
+		cursor: pointer;
+		padding: 1px 4px;
+		border-radius: 3px;
+		font: inherit;
+		line-height: 1.2;
+	}
+	[data-cms="toolbar"] button:hover {
+		background: #334155;
+		color: #e2e8f0;
+	}
+	[data-cms="toolbar"] .cms-drag-handle {
+		cursor: grab;
+		padding: 1px 4px;
+		color: #64748b;
+	}
+	[data-cms="toolbar"] .cms-drag-handle:hover { color: #e2e8f0; }
+	[data-cms="toolbar"] .cms-tag-desc {
+		color: #93c5fd;
+		padding: 0 4px;
+		max-width: 200px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+	[data-cms="toolbar"] .cms-btn-save-el {
+		color: #10b981 !important;
+	}
+
+	/* --- Palette --- */
+	[data-cms="palette"] {
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 240px;
+		background: #f8fafc;
+		border-left: 1px solid #e2e8f0;
+		z-index: 999997;
+		overflow-y: auto;
+		transform: translateX(100%);
+		transition: transform 0.2s ease;
+		padding: 0.5rem;
+		box-shadow: -4px 0 12px rgba(0,0,0,0.1);
+	}
+	[data-cms="palette"].open {
+		transform: translateX(0);
+	}
+	[data-cms="palette"] .cms-palette-item {
+		border: 1px solid #e2e8f0;
+		border-radius: 6px;
+		margin-bottom: 0.5rem;
+		overflow: hidden;
+		cursor: grab;
+		background: #fff;
+		transition: box-shadow 0.15s;
+	}
+	[data-cms="palette"] .cms-palette-item:hover {
+		box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+	}
+	[data-cms="palette"] .cms-palette-preview {
+		width: 220px;
+		height: 120px;
+		overflow: hidden;
+		position: relative;
+	}
+	[data-cms="palette"] .cms-palette-preview > div {
+		transform: scale(0.28);
+		transform-origin: top left;
+		width: 357%;
+		pointer-events: none;
+	}
+
+	/* --- Class editor --- */
+	[data-cms="class-editor"] {
+		position: fixed;
+		z-index: 999998;
+		background: #1e293b;
+		border-radius: 4px;
+		padding: 6px;
+		box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+		min-width: 200px;
+		max-width: 320px;
+	}
+	[data-cms="class-editor"] .cms-class-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 3px;
+		margin-bottom: 4px;
+	}
+	[data-cms="class-editor"] .cms-class-tag {
+		display: inline-flex;
+		align-items: center;
+		gap: 2px;
+		background: #334155;
+		color: #93c5fd;
+		padding: 1px 6px;
+		border-radius: 3px;
+		font: 11px/1.4 ui-monospace, monospace;
+	}
+	[data-cms="class-editor"] .cms-class-tag button {
+		background: none;
+		border: none;
+		color: #ef4444;
+		cursor: pointer;
+		font-size: 11px;
+		padding: 0 2px;
+	}
+	[data-cms="class-editor"] input {
+		width: 100%;
+		box-sizing: border-box;
+		background: #0f172a;
+		border: 1px solid #334155;
+		color: #e2e8f0;
+		padding: 3px 6px;
+		border-radius: 3px;
+		font: 12px/1.4 ui-monospace, monospace;
+		outline: none;
+	}
+	[data-cms="class-editor"] .cms-class-suggestions {
+		max-height: 120px;
+		overflow-y: auto;
+		margin-top: 2px;
+	}
+	[data-cms="class-editor"] .cms-class-suggestion {
+		padding: 2px 6px;
+		color: #94a3b8;
+		font: 11px/1.4 ui-monospace, monospace;
+		cursor: pointer;
+		border-radius: 2px;
+	}
+	[data-cms="class-editor"] .cms-class-suggestion:hover {
+		background: #334155;
+		color: #e2e8f0;
+	}
+
+	/* --- Attribute editor --- */
+	[data-cms="attr-editor"] {
+		position: fixed;
+		z-index: 999998;
+		background: #1e293b;
+		border-radius: 4px;
+		padding: 8px;
+		box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+		min-width: 260px;
+		max-width: 400px;
+		font: 12px/1.4 ui-monospace, monospace;
+		color: #e2e8f0;
+	}
+	[data-cms="attr-editor"] .cms-attr-row {
+		display: flex;
+		gap: 4px;
+		margin-bottom: 3px;
+		align-items: center;
+	}
+	[data-cms="attr-editor"] input {
+		background: #0f172a;
+		border: 1px solid #334155;
+		color: #e2e8f0;
+		padding: 2px 5px;
+		border-radius: 3px;
+		font: inherit;
+		outline: none;
+	}
+	[data-cms="attr-editor"] .cms-attr-key { width: 80px; }
+	[data-cms="attr-editor"] .cms-attr-val { flex: 1; }
+	[data-cms="attr-editor"] button {
+		background: transparent;
+		border: 1px solid transparent;
+		color: #94a3b8;
+		cursor: pointer;
+		padding: 1px 4px;
+		border-radius: 3px;
+		font: inherit;
+	}
+	[data-cms="attr-editor"] button:hover { color: #ef4444; }
+	[data-cms="attr-editor"] .cms-attr-add {
+		display: flex;
+		gap: 4px;
+		margin-top: 4px;
+		padding-top: 4px;
+		border-top: 1px solid #334155;
+	}
+	[data-cms="attr-editor"] .cms-attr-add button:hover { color: #10b981; }
+
+	/* --- Link editor --- */
+	[data-cms="link-editor"] {
+		position: fixed;
+		z-index: 999998;
+		background: #1e293b;
+		border-radius: 4px;
+		padding: 4px 6px;
+		box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+		display: flex;
+		gap: 4px;
+		align-items: center;
+	}
+	[data-cms="link-editor"] input {
+		background: #0f172a;
+		border: 1px solid #334155;
+		color: #e2e8f0;
+		padding: 2px 6px;
+		border-radius: 3px;
+		font: 12px/1.4 ui-monospace, monospace;
+		width: 280px;
+		outline: none;
+	}
+	[data-cms="link-editor"] button {
+		background: none;
+		border: none;
+		color: #10b981;
+		cursor: pointer;
+		font-size: 14px;
+	}
+
+</style>
+
+<!-- Dialog styles (always active — shown before edit mode is enabled) -->
+<style>
+	[data-cms="conflict-dialog"] {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 1000000;
+		background: #fff;
+		border-radius: 8px;
+		padding: 1.5rem;
+		box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+		max-width: 500px;
+		width: 90%;
+		font: 14px/1.6 system-ui, sans-serif;
+		color: #1e293b;
+	}
+	[data-cms="conflict-dialog"] h3 {
+		margin: 0 0 0.75rem;
+		font-size: 16px;
+	}
+	[data-cms="conflict-dialog"] ul {
+		list-style: none;
+		padding: 0;
+		margin: 0 0 1rem;
+		max-height: 200px;
+		overflow-y: auto;
+	}
+	[data-cms="conflict-dialog"] li {
+		padding: 4px 0;
+		font: 12px/1.4 ui-monospace, monospace;
+		color: #475569;
+		border-bottom: 1px solid #f1f5f9;
+	}
+	[data-cms="conflict-dialog"] .cms-conflict-btns {
+		display: flex;
+		gap: 0.5rem;
+	}
+	[data-cms="conflict-dialog"] .cms-conflict-btns button {
+		flex: 1;
+		padding: 0.5rem;
+		border: none;
+		border-radius: 4px;
+		font: 600 13px/1.4 system-ui, sans-serif;
+		cursor: pointer;
+	}
+	[data-cms="conflict-dialog"] .cms-conflict-theirs { background: #e2e8f0; color: #1e293b; }
+	[data-cms="conflict-dialog"] .cms-conflict-mine { background: #3b82f6; color: #fff; }
+	[data-cms="conflict-dialog-overlay"] {
+		position: fixed;
+		inset: 0;
+		background: rgba(0,0,0,0.4);
+		z-index: 999999;
+	}
+	[data-cms="cred-dialog"] {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 1000000;
+		background: #fff;
+		border-radius: 8px;
+		padding: 1.5rem;
+		box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+		max-width: 380px;
+		width: 90%;
+		font: 14px/1.6 system-ui, sans-serif;
+		color: #1e293b;
+	}
+	[data-cms="cred-dialog"] h3 {
+		margin: 0 0 0.75rem;
+		font-size: 16px;
+	}
+	[data-cms="cred-dialog"] input {
+		display: block;
+		width: 100%;
+		box-sizing: border-box;
+		padding: 0.4rem 0.6rem;
+		margin-bottom: 0.5rem;
+		border: 1px solid #cbd5e1;
+		border-radius: 4px;
+		font: 13px/1.4 system-ui, sans-serif;
+	}
+	[data-cms="cred-dialog"] button {
+		width: 100%;
+		padding: 0.5rem;
+		border: none;
+		border-radius: 4px;
+		background: #3b82f6;
+		color: #fff;
+		font: 600 13px/1.4 system-ui, sans-serif;
+		cursor: pointer;
+		margin-top: 0.25rem;
+	}
+	[data-cms="cred-dialog"] .cms-cred-error {
+		color: #ef4444;
+		font-size: 12px;
+		margin-top: 0.25rem;
+	}
+	[data-cms="cred-overlay"] {
+		position: fixed;
+		inset: 0;
+		background: rgba(0,0,0,0.4);
+		z-index: 999999;
 	}
 </style>
-<script>
-	window.editing = false;
-	const lastSavedState = localStorage.getItem('editPageState');
-	if (document.rootElement.outerHTML !== lastSavedState) document.rootElement.outerHTML = lastSavedState;
-	const editStyleSheet = document.getElementById('editStyleSheet')
-	editStyleSheet.disabled = true;
-	function editPage() {
-		if (editing) return;
-		editStyleSheet.disabled = false;
-		editing = true;
-		for (const child of document.body.children) child.contentEditable = true;
-	}
-	function discardEdit() {
-		cancelEdit();
-		document.rootElement.outerHTML = localStorage.getItem('editPageState');
-	}
-	function cancelEdit() {
-		if (!editing) return;
-		editStyleSheet.disabled = true;
-		editing = false;
-		for (const child of document.body.children) child.contentEditable = false;
-	}
-	function saveEdit() {
-		cancelEdit();
-		localStorage.setItem('editPageState', document.rootElement.outerHTML);
-	}
-</script>
+
 <script src="https://unpkg.com/@isomorphic-git/lightning-fs"></script>
 <script src="https://unpkg.com/isomorphic-git"></script>
 <script type="module">
 import http from 'https://unpkg.com/isomorphic-git/http/web/index.js'
-window.fs = new LightningFS('fs')
-window.pfs = window.fs.promises
+import { Buffer } from 'https://cdn.jsdelivr.net/npm/buffer@6.0.3/+esm'
+window.Buffer = Buffer;
+window.gitHttp = http;
+window.fs = new LightningFS('fs');
+window.pfs = window.fs.promises;
+</script>
+
+<script id="cms-runtime">
+// Disable edit stylesheet on load (HTML `disabled` attr doesn't work on <style>)
+document.getElementById('cms-edit-styles').disabled = true;
+
+// ============================================================
+// CMS State
+// ============================================================
+const cms = {
+	mode: 'view',
+	selectedEl: null,
+	editingEl: null,
+	dirty: new Set(),
+	snapshots: new Map(),
+	draggedEl: null,
+	dropTarget: null,
+	dropPosition: null,
+	toolbarEl: null,
+	paletteEl: null,
+	fabEl: null,
+	classEditorEl: null,
+	attrEditorEl: null,
+	linkEditorEl: null,
+	scrollHandler: null,
+	git: {
+		dir: '/repo',
+		corsProxy: 'https://cors.isomorphic-git.org',
+		credentials: null,
+		ready: false,
+		historyStack: [],
+		historyPointer: -1,
+	},
+};
+
+const CONTAINER_TAGS = new Set([
+	'DIV','SECTION','ARTICLE','NAV','MAIN','HEADER','FOOTER',
+	'ASIDE','UL','OL','DL','FORM','FIELDSET','DETAILS','FIGURE',
+	'FIGCAPTION','BODY',
+]);
+
+const SKIP_ATTRS = new Set([
+	'data-cms-selected','data-cms-editing','data-cms-drop-before',
+	'data-cms-drop-after','data-cms-drop-inside','contenteditable',
+	'draggable',
+]);
+
+// ============================================================
+// Helpers
+// ============================================================
+function isCmsEl(el) {
+	if (!el || el === document.documentElement || el === document.body) return false;
+	return el.hasAttribute?.('data-cms') || el.closest?.('[data-cms]');
+}
+
+function isContainer(el) {
+	return CONTAINER_TAGS.has(el.tagName);
+}
+
+function buildTagDescriptor(el) {
+	let desc = el.tagName.toLowerCase();
+	if (el.id && el.id !== 'cms-edit-styles' && el.id !== 'cms-runtime') desc += '#' + el.id;
+	for (const cls of el.classList) {
+		if (!cls.startsWith('cms-')) desc += '.' + cls;
+	}
+	return desc;
+}
+
+function describeElement(el) {
+	if (!el) return 'document';
+	let desc = '<' + el.tagName.toLowerCase();
+	if (el.id) desc += '#' + el.id;
+	desc += '>';
+	return desc;
+}
+
+function getRepoUrl() {
+	const meta = document.querySelector('meta[name="cms-repo"]');
+	return meta?.content || '';
+}
+
+function getBranch() {
+	return 'trunk';
+}
+
+function makeCmsEl(tag, attrs = {}) {
+	const el = document.createElement(tag);
+	el.setAttribute('data-cms', attrs['data-cms'] || '');
+	for (const [k, v] of Object.entries(attrs)) {
+		if (k === 'data-cms') continue;
+		el.setAttribute(k, v);
+	}
+	return el;
+}
+
+// ============================================================
+// Credential Management
+// ============================================================
+function getStoredCredentials() {
+	try {
+		return JSON.parse(localStorage.getItem('cms-git-credentials'));
+	} catch { return null; }
+}
+
+function storeCredentials(creds) {
+	localStorage.setItem('cms-git-credentials', JSON.stringify(creds));
+}
+
+function promptCredentials() {
+	return new Promise((resolve) => {
+		const overlay = makeCmsEl('div', {'data-cms': 'cred-overlay'});
+		const dialog = makeCmsEl('div', {'data-cms': 'cred-dialog'});
+		dialog.innerHTML = `
+			<h3>Git Credentials</h3>
+			<input data-cms placeholder="GitHub username" class="cms-cred-user">
+			<input data-cms type="password" placeholder="Personal access token" class="cms-cred-token">
+			<button data-cms class="cms-cred-submit">Connect</button>
+			<div data-cms class="cms-cred-error"></div>
+		`;
+		document.body.appendChild(overlay);
+		document.body.appendChild(dialog);
+
+		const userInput = dialog.querySelector('.cms-cred-user');
+		const tokenInput = dialog.querySelector('.cms-cred-token');
+		const errorDiv = dialog.querySelector('.cms-cred-error');
+		const submitBtn = dialog.querySelector('.cms-cred-submit');
+
+		submitBtn.onclick = async () => {
+			const creds = { username: userInput.value.trim(), token: tokenInput.value.trim() };
+			if (!creds.username || !creds.token) {
+				errorDiv.textContent = 'Both fields are required.';
+				return;
+			}
+			submitBtn.textContent = 'Checking...';
+			submitBtn.disabled = true;
+			try {
+				const resp = await fetch('https://api.github.com/user', {
+					headers: { 'Authorization': 'Bearer ' + creds.token },
+				});
+				if (resp.ok) {
+					storeCredentials(creds);
+					overlay.remove();
+					dialog.remove();
+					resolve(creds);
+				} else {
+					throw new Error('HTTP ' + resp.status);
+				}
+			} catch (e) {
+				errorDiv.textContent = 'Authentication failed. Check your token.';
+				submitBtn.textContent = 'Connect';
+				submitBtn.disabled = false;
+			}
+		};
+
+		tokenInput.addEventListener('keydown', (e) => {
+			if (e.key === 'Enter') submitBtn.click();
+		});
+
+		overlay.onclick = () => {
+			overlay.remove();
+			dialog.remove();
+			resolve(null);
+		};
+	});
+}
+
+async function validateCredentials(creds) {
+	try {
+		const resp = await fetch('https://api.github.com/user', {
+			headers: { 'Authorization': 'Bearer ' + creds.token },
+		});
+		return resp.ok;
+	} catch { return false; }
+}
+
+async function ensureCredentials() {
+	let creds = getStoredCredentials();
+	if (creds) {
+		if (await validateCredentials(creds)) {
+			cms.git.credentials = creds;
+			return creds;
+		}
+		// Stored credentials are stale — clear and re-prompt
+		localStorage.removeItem('cms-git-credentials');
+	}
+	creds = await promptCredentials();
+	if (creds) {
+		cms.git.credentials = creds;
+		return creds;
+	}
+	return null;
+}
+
+// ============================================================
+// Git Integration
+// ============================================================
+async function gitInit() {
+	const dir = cms.git.dir;
+	const url = getRepoUrl();
+	const branch = getBranch();
+	if (!url) { console.warn('CMS: No repo URL found in <meta name="cms-repo">'); return; }
+
+	try {
+		await pfs.stat(dir);
+		await git.fetch({
+			fs, http: window.gitHttp, dir, ref: branch, singleBranch: true,
+			onAuth: () => ({ username: cms.git.credentials.username, password: cms.git.credentials.token }),
+			corsProxy: cms.git.corsProxy,
+		});
+	} catch {
+		await pfs.mkdir(dir).catch(() => {});
+		await git.clone({
+			fs, http: window.gitHttp, dir, url, ref: branch,
+			singleBranch: true, depth: 100,
+			onAuth: () => ({ username: cms.git.credentials.username, password: cms.git.credentials.token }),
+			corsProxy: cms.git.corsProxy,
+		});
+	}
+
+	try {
+		const log = await git.log({ fs, dir, ref: branch, depth: 200 });
+		cms.git.historyStack = log.map(c => c.oid).reverse();
+		cms.git.historyPointer = cms.git.historyStack.length - 1;
+	} catch {
+		cms.git.historyStack = [];
+		cms.git.historyPointer = -1;
+	}
+	cms.git.ready = true;
+}
+
+function serializeDocument() {
+	const clone = document.documentElement.cloneNode(true);
+
+	clone.querySelectorAll('[data-cms]').forEach(el => el.remove());
+
+	for (const attr of ['data-cms-selected','data-cms-editing','data-cms-drop-before','data-cms-drop-after','data-cms-drop-inside','contenteditable','draggable']) {
+		clone.querySelectorAll(`[${attr}]`).forEach(el => el.removeAttribute(attr));
+	}
+
+	const editStyle = clone.querySelector('#cms-edit-styles');
+	if (editStyle) editStyle.setAttribute('disabled', '');
+
+	return '<!doctype html>\n' + clone.outerHTML + '\n';
+}
+
+async function commitCurrentState(message) {
+	if (!cms.git.ready) return;
+	const dir = cms.git.dir;
+	const html = serializeDocument();
+
+	await pfs.writeFile(dir + '/index.html', html);
+	await git.add({ fs, dir, filepath: 'index.html' });
+
+	if (cms.git.historyPointer < cms.git.historyStack.length - 1) {
+		cms.git.historyStack = cms.git.historyStack.slice(0, cms.git.historyPointer + 1);
+	}
+
+	const oid = await git.commit({
+		fs, dir, message,
+		author: {
+			name: cms.git.credentials.username,
+			email: cms.git.credentials.username + '@users.noreply.github.com',
+		},
+	});
+
+	cms.git.historyStack.push(oid);
+	cms.git.historyPointer = cms.git.historyStack.length - 1;
+	return oid;
+}
+
+async function gitPush() {
+	if (!cms.git.ready) return;
+	try {
+		await git.push({
+			fs, http: window.gitHttp,
+			dir: cms.git.dir,
+			ref: getBranch(),
+			onAuth: () => ({ username: cms.git.credentials.username, password: cms.git.credentials.token }),
+			onAuthFailure: () => {
+				localStorage.removeItem('cms-git-credentials');
+				return { cancel: true };
+			},
+			corsProxy: cms.git.corsProxy,
+		});
+	} catch (e) {
+		if (e.code === 'PushRejectedError' || e.code === 'PushRejectedNonFastForward') {
+			showConflictDialog();
+		} else if (e.code === 'UserCanceledError' || (e.code === 'HttpError' && e.data?.statusCode === 401)) {
+			// Auth failed — re-prompt for credentials and retry
+			const creds = await promptCredentials();
+			if (creds) {
+				cms.git.credentials = creds;
+				await gitPush();
+			}
+		} else {
+			console.error('CMS push error:', e);
+			alert('Push failed: ' + e.message);
+		}
+	}
+}
+
+async function readFileFromCommit(oid, filepath) {
+	const { blob } = await git.readBlob({ fs, dir: cms.git.dir, oid, filepath });
+	return new TextDecoder().decode(blob);
+}
+
+// ============================================================
+// Undo / Redo
+// ============================================================
+async function gitUndo() {
+	if (!cms.git.ready || cms.git.historyPointer <= 0) return;
+	if (cms.editingEl) finalizeEdit(cms.editingEl);
+
+	cms.git.historyPointer--;
+	const oid = cms.git.historyStack[cms.git.historyPointer];
+	try {
+		const content = await readFileFromCommit(oid, 'index.html');
+		await pfs.writeFile(cms.git.dir + '/index.html', content);
+		replacePageContent(content);
+	} catch (e) {
+		console.error('CMS undo error:', e);
+		cms.git.historyPointer++;
+	}
+}
+
+async function gitRedo() {
+	if (!cms.git.ready || cms.git.historyPointer >= cms.git.historyStack.length - 1) return;
+	if (cms.editingEl) finalizeEdit(cms.editingEl);
+
+	cms.git.historyPointer++;
+	const oid = cms.git.historyStack[cms.git.historyPointer];
+	try {
+		const content = await readFileFromCommit(oid, 'index.html');
+		await pfs.writeFile(cms.git.dir + '/index.html', content);
+		replacePageContent(content);
+	} catch (e) {
+		console.error('CMS redo error:', e);
+		cms.git.historyPointer--;
+	}
+}
+
+function replacePageContent(htmlString) {
+	const parser = new DOMParser();
+	const doc = parser.parseFromString(htmlString, 'text/html');
+
+	const oldCmsEls = [];
+	document.body.querySelectorAll('[data-cms]').forEach(el => oldCmsEls.push(el));
+
+	const nonCmsChildren = [...document.body.children].filter(el => !isCmsEl(el));
+	nonCmsChildren.forEach(el => el.remove());
+
+	const newNonCms = [...doc.body.children].filter(el => !el.hasAttribute('data-cms'));
+	const refNode = oldCmsEls[0] || null;
+	newNonCms.forEach(el => {
+		const imported = document.adoptNode(el);
+		if (refNode) document.body.insertBefore(imported, refNode);
+		else document.body.appendChild(imported);
+	});
+
+	document.title = doc.title;
+
+	deselectElement();
+}
+
+// ============================================================
+// Conflict Resolution
+// ============================================================
+async function showConflictDialog() {
+	const dir = cms.git.dir;
+	const branch = getBranch();
+
+	let remoteCommits = [];
+	try {
+		await git.fetch({
+			fs, http: window.gitHttp, dir, ref: branch, singleBranch: true,
+			onAuth: () => ({ username: cms.git.credentials.username, password: cms.git.credentials.token }),
+			corsProxy: cms.git.corsProxy,
+		});
+		const remoteLog = await git.log({ fs, dir, ref: 'remotes/origin/' + branch, depth: 20 });
+		const localOids = new Set(cms.git.historyStack);
+		remoteCommits = remoteLog.filter(c => !localOids.has(c.oid)).slice(0, 10);
+	} catch (e) {
+		console.error('CMS: error fetching remote log', e);
+	}
+
+	const overlay = makeCmsEl('div', {'data-cms': 'conflict-dialog-overlay'});
+	const dialog = makeCmsEl('div', {'data-cms': 'conflict-dialog'});
+
+	let commitList = '';
+	for (const c of remoteCommits) {
+		const date = new Date(c.commit.author.timestamp * 1000).toLocaleString();
+		commitList += `<li>${c.oid.slice(0,7)}: "${c.commit.message.trim()}" (${date})</li>`;
+	}
+	if (!commitList) commitList = '<li>Unable to load remote commits</li>';
+
+	dialog.innerHTML = `
+		<h3>Remote has new changes</h3>
+		<ul>${commitList}</ul>
+		<div class="cms-conflict-btns">
+			<button data-cms class="cms-conflict-theirs">Take theirs</button>
+			<button data-cms class="cms-conflict-mine">Take mine</button>
+		</div>
+	`;
+
+	document.body.appendChild(overlay);
+	document.body.appendChild(dialog);
+
+	dialog.querySelector('.cms-conflict-theirs').onclick = () => resolveConflict('theirs', overlay, dialog);
+	dialog.querySelector('.cms-conflict-mine').onclick = () => resolveConflict('mine', overlay, dialog);
+	overlay.onclick = () => { overlay.remove(); dialog.remove(); };
+}
+
+async function resolveConflict(strategy, overlay, dialog) {
+	const dir = cms.git.dir;
+	const branch = getBranch();
+
+	try {
+		if (strategy === 'theirs') {
+			await git.checkout({ fs, dir, ref: 'remotes/origin/' + branch, filepaths: ['index.html'], force: true });
+			const ref = await git.resolveRef({ fs, dir, ref: 'remotes/origin/' + branch });
+			await pfs.writeFile(dir + '/.git/refs/heads/' + branch, ref + '\n');
+			const content = await pfs.readFile(dir + '/index.html', 'utf8');
+			replacePageContent(content);
+			const log = await git.log({ fs, dir, ref: branch, depth: 200 });
+			cms.git.historyStack = log.map(c => c.oid).reverse();
+			cms.git.historyPointer = cms.git.historyStack.length - 1;
+		} else {
+			await git.push({
+				fs, http: window.gitHttp, dir, ref: branch, force: true,
+				onAuth: () => ({ username: cms.git.credentials.username, password: cms.git.credentials.token }),
+				corsProxy: cms.git.corsProxy,
+			});
+		}
+	} catch (e) {
+		console.error('CMS conflict resolution error:', e);
+		alert('Resolution failed: ' + e.message);
+	}
+
+	overlay.remove();
+	dialog.remove();
+}
+
+// ============================================================
+// FAB (Floating Action Buttons)
+// ============================================================
+function createFab() {
+	const fab = makeCmsEl('div', {'data-cms': 'fab'});
+	fab.innerHTML = `
+		<button data-cms class="cms-fab-publish">Publish</button>
+		<button data-cms class="cms-fab-save">Save</button>
+		<button data-cms class="cms-fab-discard">Discard</button>
+		<button data-cms class="cms-fab-blocks">Blocks</button>
+	`;
+	fab.querySelector('.cms-fab-publish').onclick = () => exitEditMode('publish');
+	fab.querySelector('.cms-fab-save').onclick = () => exitEditMode('save');
+	fab.querySelector('.cms-fab-discard').onclick = () => exitEditMode('discard');
+	fab.querySelector('.cms-fab-blocks').onclick = () => togglePalette();
+	document.body.appendChild(fab);
+	cms.fabEl = fab;
+}
+
+// ============================================================
+// Element Toolbar
+// ============================================================
+function createToolbar() {
+	const tb = makeCmsEl('div', {'data-cms': 'toolbar'});
+	tb.innerHTML = `
+		<span data-cms class="cms-drag-handle" draggable="true" title="Drag to move">&#x2630;</span>
+		<span data-cms class="cms-tag-desc"></span>
+		<button data-cms class="cms-btn-classes" title="Edit classes">.</button>
+		<button data-cms class="cms-btn-attrs" title="Edit attributes">{}</button>
+		<button data-cms class="cms-btn-clone" title="Clone element">&#x2398;</button>
+		<button data-cms class="cms-btn-save-el" title="Save changes" hidden>&#x2714;</button>
+		<button data-cms class="cms-btn-delete" title="Delete element">&#x2715;</button>
+	`;
+	tb.style.display = 'none';
+	document.body.appendChild(tb);
+	cms.toolbarEl = tb;
+
+	tb.querySelector('.cms-btn-clone').onclick = (e) => { e.stopPropagation(); cloneElement(); };
+	tb.querySelector('.cms-btn-delete').onclick = (e) => { e.stopPropagation(); deleteElement(); };
+	tb.querySelector('.cms-btn-save-el').onclick = (e) => { e.stopPropagation(); if (cms.editingEl) finalizeEdit(cms.editingEl); };
+	tb.querySelector('.cms-btn-classes').onclick = (e) => { e.stopPropagation(); toggleClassEditor(); };
+	tb.querySelector('.cms-btn-attrs').onclick = (e) => { e.stopPropagation(); toggleAttrEditor(); };
+
+	const handle = tb.querySelector('.cms-drag-handle');
+	handle.addEventListener('dragstart', (e) => {
+		if (!cms.selectedEl) return;
+		cms.draggedEl = cms.selectedEl;
+		e.dataTransfer.setData('text/plain', 'cms-move');
+		e.dataTransfer.effectAllowed = 'move';
+		e.dataTransfer.setDragImage(cms.selectedEl, 0, 0);
+	});
+	handle.addEventListener('dragend', onDragEnd);
+}
+
+function updateToolbar(el) {
+	if (!cms.toolbarEl) return;
+	cms.toolbarEl.querySelector('.cms-tag-desc').textContent = buildTagDescriptor(el);
+	updateToolbarSaveButton();
+	cms.toolbarEl.style.display = '';
+	// Defer positioning to next frame so the browser has painted the toolbar
+	// and getBoundingClientRect() returns its actual dimensions
+	requestAnimationFrame(() => positionToolbar(el));
+}
+
+function positionToolbar(el) {
+	if (!cms.toolbarEl || !el) return;
+	const rect = el.getBoundingClientRect();
+	const tb = cms.toolbarEl;
+	const tbRect = tb.getBoundingClientRect();
+	let top = rect.top - tbRect.height - 4;
+	let left = rect.left;
+	if (top < 0) top = rect.bottom + 4;
+	if (left + tbRect.width > window.innerWidth) left = window.innerWidth - tbRect.width - 4;
+	if (left < 0) left = 0;
+	tb.style.left = left + 'px';
+	tb.style.top = top + 'px';
+}
+
+function updateToolbarSaveButton() {
+	if (!cms.toolbarEl) return;
+	const btn = cms.toolbarEl.querySelector('.cms-btn-save-el');
+	btn.hidden = !cms.dirty.has(cms.selectedEl);
+}
+
+function hideToolbar() {
+	if (cms.toolbarEl) cms.toolbarEl.style.display = 'none';
+}
+
+// ============================================================
+// Element Selection
+// ============================================================
+function selectElement(el) {
+	if (el === cms.selectedEl) return;
+	deselectElement();
+	cms.selectedEl = el;
+	el.setAttribute('data-cms-selected', '');
+	el.draggable = true;
+	el._cmsDragStart = (e) => {
+		if (cms.editingEl === el) return; // don't drag while editing text
+		cms.draggedEl = el;
+		e.dataTransfer.setData('text/plain', 'cms-move');
+		e.dataTransfer.effectAllowed = 'move';
+	};
+	el._cmsDragEnd = onDragEnd;
+	el.addEventListener('dragstart', el._cmsDragStart);
+	el.addEventListener('dragend', el._cmsDragEnd);
+	updateToolbar(el);
+}
+
+function deselectElement() {
+	closeClassEditor();
+	closeAttrEditor();
+	closeLinkEditor();
+	if (cms.editingEl) finalizeEdit(cms.editingEl);
+	if (cms.selectedEl) {
+		cms.selectedEl.removeAttribute('data-cms-selected');
+		cms.selectedEl.draggable = false;
+		if (cms.selectedEl._cmsDragStart) {
+			cms.selectedEl.removeEventListener('dragstart', cms.selectedEl._cmsDragStart);
+			cms.selectedEl.removeEventListener('dragend', cms.selectedEl._cmsDragEnd);
+			delete cms.selectedEl._cmsDragStart;
+			delete cms.selectedEl._cmsDragEnd;
+		}
+		cms.selectedEl = null;
+	}
+	hideToolbar();
+}
+
+function onDocumentClick(e) {
+	if (cms.mode !== 'edit') return;
+	if (isCmsEl(e.target)) return;
+
+	e.preventDefault();
+	e.stopPropagation();
+
+	const el = e.target;
+	if (el === document.body || el === document.documentElement) {
+		deselectElement();
+		return;
+	}
+	selectElement(el);
+}
+
+function onDocumentDblClick(e) {
+	if (cms.mode !== 'edit') return;
+	if (isCmsEl(e.target)) return;
+
+	e.preventDefault();
+	e.stopPropagation();
+
+	const el = e.target;
+	if (el === document.body || el === document.documentElement) return;
+
+	selectElement(el);
+	startEditing(el);
+}
+
+function onKeyDown(e) {
+	if (cms.mode !== 'edit') return;
+	if ((e.ctrlKey || e.metaKey) && e.key === 'z' && !e.shiftKey) {
+		e.preventDefault();
+		gitUndo();
+	} else if ((e.ctrlKey || e.metaKey) && (e.key === 'y' || (e.key === 'z' && e.shiftKey))) {
+		e.preventDefault();
+		gitRedo();
+	} else if (e.key === 'Escape') {
+		if (cms.editingEl) {
+			finalizeEdit(cms.editingEl);
+		} else if (cms.selectedEl) {
+			deselectElement();
+		}
+	} else if (e.key === 'Delete' && !cms.editingEl && cms.selectedEl) {
+		e.preventDefault();
+		deleteElement();
+	}
+}
+
+function onScroll() {
+	if (cms.selectedEl) positionToolbar(cms.selectedEl);
+}
+
+function onDocumentMouseDown(e) {
+	if (cms.mode !== 'edit') return;
+	if (isCmsEl(e.target)) return;
+	const el = e.target;
+	if (el === document.body || el === document.documentElement) return;
+	// If we're editing this element, don't initiate drag (allow text selection)
+	if (cms.editingEl === el) return;
+	// Select immediately so draggable=true is set before the drag gesture starts
+	selectElement(el);
+}
+
+// ============================================================
+// Inline Editing
+// ============================================================
+function startEditing(el) {
+	if (cms.editingEl === el) return;
+	if (cms.editingEl) finalizeEdit(cms.editingEl);
+
+	if (el.tagName === 'IMG') {
+		startImageEdit(el);
+		return;
+	}
+
+	cms.editingEl = el;
+
+	if (el.tagName === 'STYLE' || el.tagName === 'SCRIPT') {
+		cms.snapshots.set(el, el.textContent);
+	} else {
+		cms.snapshots.set(el, el.innerHTML);
+	}
+
+	el.setAttribute('data-cms-editing', '');
+	el.removeAttribute('data-cms-selected');
+	el.contentEditable = 'true';
+	el.focus();
+
+	el._cmsInputHandler = () => checkDirty(el);
+	el.addEventListener('input', el._cmsInputHandler);
+
+	// Shift+Enter inserts <br>; Enter creates a sibling element
+	const SAME_TAG_ON_ENTER = new Set(['P','LI','DD','DT','BLOCKQUOTE','TR']);
+	el._cmsKeydownHandler = (e) => {
+		if (e.key !== 'Enter') return;
+		if (el.tagName === 'STYLE' || el.tagName === 'SCRIPT') return; // normal newlines in code
+		e.preventDefault();
+		if (e.shiftKey) {
+			document.execCommand('insertLineBreak');
+		} else {
+			// Finalize this element, then create a sibling
+			const tag = SAME_TAG_ON_ENTER.has(el.tagName) ? el.tagName.toLowerCase() : 'p';
+			finalizeEdit(el);
+			const sibling = document.createElement(tag);
+			sibling.innerHTML = '<br>';
+			el.parentNode.insertBefore(sibling, el.nextSibling);
+			const msg = `Add ${describeElement(sibling)} after ${describeElement(el)}`;
+			commitCurrentState(msg).catch(e => console.error('CMS commit error:', e));
+			selectElement(sibling);
+			startEditing(sibling);
+		}
+	};
+	el.addEventListener('keydown', el._cmsKeydownHandler);
+
+	if (el.closest('a') || el.tagName === 'A') {
+		const aEl = el.tagName === 'A' ? el : el.closest('a');
+		openLinkEditor(aEl);
+	}
+}
+
+function finalizeEdit(el) {
+	if (!el) return;
+
+	let changed = false;
+	const snapshot = cms.snapshots.get(el);
+	if (el.tagName === 'STYLE' || el.tagName === 'SCRIPT') {
+		changed = el.textContent !== snapshot;
+	} else {
+		changed = el.innerHTML !== snapshot;
+	}
+
+	if (changed) {
+		const msg = `Edit ${describeElement(el)} in ${describeElement(el.parentElement)}`;
+		commitCurrentState(msg).catch(e => console.error('CMS commit error:', e));
+	}
+
+	cms.dirty.delete(el);
+	el.removeAttribute('data-cms-editing');
+	el.removeAttribute('contenteditable');
+	if (el._cmsInputHandler) {
+		el.removeEventListener('input', el._cmsInputHandler);
+		delete el._cmsInputHandler;
+	}
+	if (el._cmsKeydownHandler) {
+		el.removeEventListener('keydown', el._cmsKeydownHandler);
+		delete el._cmsKeydownHandler;
+	}
+	cms.snapshots.delete(el);
+	cms.editingEl = null;
+
+	closeLinkEditor();
+
+	if (cms.selectedEl === el || !cms.selectedEl) {
+		cms.selectedEl = el;
+		el.setAttribute('data-cms-selected', '');
+		updateToolbar(el);
+	}
+}
+
+function checkDirty(el) {
+	const original = cms.snapshots.get(el);
+	const current = (el.tagName === 'STYLE' || el.tagName === 'SCRIPT') ? el.textContent : el.innerHTML;
+	if (current !== original) {
+		cms.dirty.add(el);
+	} else {
+		cms.dirty.delete(el);
+	}
+	updateToolbarSaveButton();
+}
+
+// ============================================================
+// Clone / Delete
+// ============================================================
+function cloneElement() {
+	const el = cms.selectedEl;
+	if (!el) return;
+	const clone = el.cloneNode(true);
+	clone.removeAttribute('data-cms-selected');
+	clone.removeAttribute('data-cms-editing');
+	clone.removeAttribute('contenteditable');
+	el.parentNode.insertBefore(clone, el.nextSibling);
+	const msg = `Clone ${describeElement(el)} in ${describeElement(el.parentElement)}`;
+	commitCurrentState(msg).catch(e => console.error('CMS commit error:', e));
+	selectElement(clone);
+}
+
+function deleteElement() {
+	const el = cms.selectedEl;
+	if (!el) return;
+	const msg = `Delete ${describeElement(el)} from ${describeElement(el.parentElement)}`;
+	deselectElement();
+	el.remove();
+	commitCurrentState(msg).catch(e => console.error('CMS commit error:', e));
+}
+
+// ============================================================
+// Image Editing
+// ============================================================
+function startImageEdit(imgEl) {
+	const input = makeCmsEl('input', {'data-cms': ''});
+	input.type = 'file';
+	input.accept = 'image/*';
+	input.style.display = 'none';
+	document.body.appendChild(input);
+
+	input.onchange = () => {
+		const file = input.files[0];
+		if (!file) { input.remove(); return; }
+		const reader = new FileReader();
+		reader.onload = () => {
+			imgEl.src = reader.result;
+			const msg = `Replace image in ${describeElement(imgEl.parentElement)}`;
+			commitCurrentState(msg).catch(e => console.error('CMS commit error:', e));
+			input.remove();
+		};
+		reader.readAsDataURL(file);
+	};
+	input.click();
+}
+
+// ============================================================
+// Class Editor
+// ============================================================
+function getAllDefinedClasses() {
+	const classes = new Set();
+	for (const sheet of document.styleSheets) {
+		try {
+			for (const rule of sheet.cssRules) {
+				extractClassesFromRule(rule, classes);
+			}
+		} catch { /* cross-origin */ }
+	}
+	for (const el of document.querySelectorAll('[class]')) {
+		if (isCmsEl(el)) continue;
+		for (const cls of el.classList) {
+			if (!cls.startsWith('cms-')) classes.add(cls);
+		}
+	}
+	for (const tmpl of document.querySelectorAll('template')) {
+		for (const el of tmpl.content.querySelectorAll('[class]')) {
+			for (const cls of el.classList) {
+				if (!cls.startsWith('cms-')) classes.add(cls);
+			}
+		}
+	}
+	return [...classes].sort();
+}
+
+function extractClassesFromRule(rule, classes) {
+	if (rule.selectorText) {
+		for (const match of rule.selectorText.matchAll(/\.([a-zA-Z_][\w-]*)/g)) {
+			if (!match[1].startsWith('cms-')) classes.add(match[1]);
+		}
+	}
+	if (rule.cssRules) {
+		for (const inner of rule.cssRules) extractClassesFromRule(inner, classes);
+	}
+}
+
+function toggleClassEditor() {
+	if (cms.classEditorEl) { closeClassEditor(); return; }
+	if (!cms.selectedEl) return;
+	openClassEditor(cms.selectedEl);
+}
+
+function openClassEditor(el) {
+	closeClassEditor();
+	const editor = makeCmsEl('div', {'data-cms': 'class-editor'});
+	cms.classEditorEl = editor;
+
+	const tagsDiv = makeCmsEl('div', {'data-cms': ''});
+	tagsDiv.className = 'cms-class-tags';
+
+	const input = makeCmsEl('input', {'data-cms': ''});
+	input.className = 'cms-class-input';
+	input.placeholder = 'Add class...';
+
+	const suggestionsDiv = makeCmsEl('div', {'data-cms': ''});
+	suggestionsDiv.className = 'cms-class-suggestions';
+
+	editor.appendChild(tagsDiv);
+	editor.appendChild(input);
+	editor.appendChild(suggestionsDiv);
+	document.body.appendChild(editor);
+
+	const snapshotClasses = [...el.classList].filter(c => !c.startsWith('cms-'));
+	cms.snapshots.set('classes:' + el.tagName, snapshotClasses.join(' '));
+
+	function renderTags() {
+		tagsDiv.innerHTML = '';
+		for (const cls of el.classList) {
+			if (cls.startsWith('cms-')) continue;
+			const tag = makeCmsEl('span', {'data-cms': ''});
+			tag.className = 'cms-class-tag';
+			tag.textContent = cls + ' ';
+			const removeBtn = makeCmsEl('button', {'data-cms': ''});
+			removeBtn.textContent = '\u00d7';
+			removeBtn.onclick = (e) => {
+				e.stopPropagation();
+				el.classList.remove(cls);
+				renderTags();
+				checkClassDirty(el);
+			};
+			tag.appendChild(removeBtn);
+			tagsDiv.appendChild(tag);
+		}
+	}
+
+	function renderSuggestions(filter) {
+		suggestionsDiv.innerHTML = '';
+		const all = getAllDefinedClasses();
+		const current = new Set(el.classList);
+		const filtered = all.filter(c => !current.has(c) && (!filter || c.includes(filter)));
+		for (const cls of filtered.slice(0, 20)) {
+			const item = makeCmsEl('div', {'data-cms': ''});
+			item.className = 'cms-class-suggestion';
+			item.textContent = cls;
+			item.onclick = (e) => {
+				e.stopPropagation();
+				el.classList.add(cls);
+				input.value = '';
+				renderTags();
+				renderSuggestions('');
+				checkClassDirty(el);
+			};
+			suggestionsDiv.appendChild(item);
+		}
+	}
+
+	input.addEventListener('input', () => renderSuggestions(input.value.trim()));
+	input.addEventListener('keydown', (e) => {
+		if (e.key === 'Enter' && input.value.trim()) {
+			e.preventDefault();
+			el.classList.add(input.value.trim());
+			input.value = '';
+			renderTags();
+			renderSuggestions('');
+			checkClassDirty(el);
+		} else if (e.key === 'Escape') {
+			closeClassEditor();
+		}
+	});
+
+	renderTags();
+	renderSuggestions('');
+	positionEditor(editor, el);
+	input.focus();
+}
+
+function checkClassDirty(el) {
+	cms.dirty.add(el);
+	updateToolbarSaveButton();
+}
+
+function closeClassEditor() {
+	if (!cms.classEditorEl) return;
+
+	if (cms.selectedEl) {
+		const key = 'classes:' + cms.selectedEl.tagName;
+		const original = cms.snapshots.get(key);
+		const current = [...cms.selectedEl.classList].filter(c => !c.startsWith('cms-')).join(' ');
+		if (original !== undefined && original !== current) {
+			const msg = `Edit classes on ${describeElement(cms.selectedEl)}`;
+			commitCurrentState(msg).catch(e => console.error('CMS commit error:', e));
+			cms.dirty.delete(cms.selectedEl);
+			updateToolbarSaveButton();
+		}
+		cms.snapshots.delete(key);
+	}
+
+	cms.classEditorEl.remove();
+	cms.classEditorEl = null;
+}
+
+// ============================================================
+// Attribute Editor
+// ============================================================
+function toggleAttrEditor() {
+	if (cms.attrEditorEl) { closeAttrEditor(); return; }
+	if (!cms.selectedEl) return;
+	openAttrEditor(cms.selectedEl);
+}
+
+function openAttrEditor(el) {
+	closeAttrEditor();
+	const editor = makeCmsEl('div', {'data-cms': 'attr-editor'});
+	cms.attrEditorEl = editor;
+
+	const snapshotAttrs = {};
+	for (const attr of el.attributes) {
+		if (!SKIP_ATTRS.has(attr.name) && !attr.name.startsWith('data-cms')) {
+			snapshotAttrs[attr.name] = attr.value;
+		}
+	}
+	cms.snapshots.set('attrs:' + el.tagName, JSON.stringify(snapshotAttrs));
+
+	function render() {
+		editor.innerHTML = '';
+		for (const attr of el.attributes) {
+			if (SKIP_ATTRS.has(attr.name) || attr.name.startsWith('data-cms')) continue;
+			const row = makeCmsEl('div', {'data-cms': ''});
+			row.className = 'cms-attr-row';
+
+			const keyInput = makeCmsEl('input', {'data-cms': ''});
+			keyInput.className = 'cms-attr-key';
+			keyInput.value = attr.name;
+			keyInput.readOnly = true;
+
+			const valInput = makeCmsEl('input', {'data-cms': ''});
+			valInput.className = 'cms-attr-val';
+			valInput.value = attr.value;
+			valInput.addEventListener('change', () => {
+				el.setAttribute(attr.name, valInput.value);
+			});
+
+			const delBtn = makeCmsEl('button', {'data-cms': ''});
+			delBtn.textContent = '\u00d7';
+			delBtn.onclick = () => {
+				el.removeAttribute(attr.name);
+				render();
+			};
+
+			row.appendChild(keyInput);
+			row.appendChild(valInput);
+			row.appendChild(delBtn);
+			editor.appendChild(row);
+		}
+
+		const addRow = makeCmsEl('div', {'data-cms': ''});
+		addRow.className = 'cms-attr-add';
+		const newKey = makeCmsEl('input', {'data-cms': ''});
+		newKey.className = 'cms-attr-key';
+		newKey.placeholder = 'attr';
+		const newVal = makeCmsEl('input', {'data-cms': ''});
+		newVal.className = 'cms-attr-val';
+		newVal.placeholder = 'value';
+		const addBtn = makeCmsEl('button', {'data-cms': ''});
+		addBtn.textContent = '+';
+		addBtn.onclick = () => {
+			if (newKey.value.trim()) {
+				el.setAttribute(newKey.value.trim(), newVal.value);
+				render();
+			}
+		};
+		addRow.appendChild(newKey);
+		addRow.appendChild(newVal);
+		addRow.appendChild(addBtn);
+		editor.appendChild(addRow);
+	}
+
+	render();
+	document.body.appendChild(editor);
+	positionEditor(editor, el);
+}
+
+function closeAttrEditor() {
+	if (!cms.attrEditorEl) return;
+
+	if (cms.selectedEl) {
+		const key = 'attrs:' + cms.selectedEl.tagName;
+		const original = cms.snapshots.get(key);
+		if (original !== undefined) {
+			const current = {};
+			for (const attr of cms.selectedEl.attributes) {
+				if (!SKIP_ATTRS.has(attr.name) && !attr.name.startsWith('data-cms')) {
+					current[attr.name] = attr.value;
+				}
+			}
+			if (JSON.stringify(current) !== original) {
+				const msg = `Edit attributes on ${describeElement(cms.selectedEl)}`;
+				commitCurrentState(msg).catch(e => console.error('CMS commit error:', e));
+			}
+		}
+		cms.snapshots.delete(key);
+	}
+
+	cms.attrEditorEl.remove();
+	cms.attrEditorEl = null;
+}
+
+function positionEditor(editor, el) {
+	const rect = el.getBoundingClientRect();
+	const tbRect = cms.toolbarEl?.getBoundingClientRect();
+	let top = tbRect ? tbRect.bottom + 4 : rect.top - 4;
+	let left = tbRect ? tbRect.left : rect.left;
+	if (top + 200 > window.innerHeight) top = rect.top - 200;
+	if (left + 320 > window.innerWidth) left = window.innerWidth - 324;
+	if (left < 4) left = 4;
+	if (top < 4) top = 4;
+	editor.style.left = left + 'px';
+	editor.style.top = top + 'px';
+}
+
+// ============================================================
+// Link Editor
+// ============================================================
+function openLinkEditor(aEl) {
+	closeLinkEditor();
+	const editor = makeCmsEl('div', {'data-cms': 'link-editor'});
+	const input = makeCmsEl('input', {'data-cms': ''});
+	input.type = 'url';
+	input.value = aEl.getAttribute('href') || '';
+	const confirmBtn = makeCmsEl('button', {'data-cms': ''});
+	confirmBtn.innerHTML = '&#x2714;';
+
+	editor.appendChild(input);
+	editor.appendChild(confirmBtn);
+	document.body.appendChild(editor);
+	cms.linkEditorEl = editor;
+
+	const rect = aEl.getBoundingClientRect();
+	editor.style.left = rect.left + 'px';
+	editor.style.top = (rect.bottom + 4) + 'px';
+
+	const apply = () => { aEl.setAttribute('href', input.value); };
+	confirmBtn.onclick = (e) => { e.stopPropagation(); apply(); closeLinkEditor(); };
+	input.addEventListener('keydown', (e) => {
+		if (e.key === 'Enter') { e.preventDefault(); apply(); closeLinkEditor(); }
+		if (e.key === 'Escape') closeLinkEditor();
+		e.stopPropagation();
+	});
+	input.addEventListener('click', (e) => e.stopPropagation());
+}
+
+function closeLinkEditor() {
+	if (!cms.linkEditorEl) return;
+	cms.linkEditorEl.remove();
+	cms.linkEditorEl = null;
+}
+
+// ============================================================
+// Block Palette
+// ============================================================
+function createPalette() {
+	const palette = makeCmsEl('div', {'data-cms': 'palette'});
+	const list = makeCmsEl('div', {'data-cms': ''});
+	list.className = 'cms-palette-list';
+
+	const templates = [...document.querySelectorAll('template')];
+	templates.forEach((tmpl, idx) => {
+		const item = makeCmsEl('div', {'data-cms': ''});
+		item.className = 'cms-palette-item';
+		item.draggable = true;
+		item.dataset.cmsTemplateIndex = idx;
+
+		const preview = makeCmsEl('div', {'data-cms': ''});
+		preview.className = 'cms-palette-preview';
+		const inner = document.createElement('div');
+		inner.appendChild(tmpl.content.cloneNode(true));
+		preview.appendChild(inner);
+
+		item.appendChild(preview);
+		list.appendChild(item);
+
+		item.addEventListener('dragstart', (e) => {
+			e.dataTransfer.setData('text/plain', 'cms-template');
+			e.dataTransfer.setData('cms-template-index', String(idx));
+			e.dataTransfer.effectAllowed = 'copy';
+		});
+		item.addEventListener('dragend', onDragEnd);
+	});
+
+	palette.appendChild(list);
+	document.body.appendChild(palette);
+	cms.paletteEl = palette;
+}
+
+function togglePalette() {
+	if (!cms.paletteEl) return;
+	cms.paletteEl.classList.toggle('open');
+}
+
+// ============================================================
+// Drag and Drop
+// ============================================================
+function onDocumentDragOver(e) {
+	if (cms.mode !== 'edit') return;
+	const target = document.elementFromPoint(e.clientX, e.clientY);
+	if (!target || isCmsEl(target) || target === document.body || target === document.documentElement) {
+		clearDropIndicators();
+		return;
+	}
+
+	e.preventDefault();
+	e.dataTransfer.dropEffect = cms.draggedEl ? 'move' : 'copy';
+	clearDropIndicators();
+
+	const rect = target.getBoundingClientRect();
+	const relY = (e.clientY - rect.top) / rect.height;
+
+	if (isContainer(target) && relY > 0.33 && relY < 0.67) {
+		target.setAttribute('data-cms-drop-inside', '');
+		cms.dropTarget = target;
+		cms.dropPosition = 'inside';
+	} else if (relY <= 0.5) {
+		target.setAttribute('data-cms-drop-before', '');
+		cms.dropTarget = target;
+		cms.dropPosition = 'before';
+	} else {
+		target.setAttribute('data-cms-drop-after', '');
+		cms.dropTarget = target;
+		cms.dropPosition = 'after';
+	}
+}
+
+function onDocumentDrop(e) {
+	if (cms.mode !== 'edit') return;
+	e.preventDefault();
+	clearDropIndicators();
+
+	const target = cms.dropTarget;
+	const position = cms.dropPosition;
+	if (!target) return;
+
+	const type = e.dataTransfer.getData('text/plain');
+
+	if (type === 'cms-template') {
+		const idx = parseInt(e.dataTransfer.getData('cms-template-index'));
+		const templates = [...document.querySelectorAll('template')];
+		if (templates[idx]) {
+			const fragment = templates[idx].content.cloneNode(true);
+			const wrapper = document.createElement('div');
+			wrapper.appendChild(fragment);
+			const nodes = [...wrapper.childNodes];
+
+			nodes.forEach(node => {
+				insertAtDropPosition(node, target, position);
+			});
+
+			const msg = `Add block to ${describeElement(position === 'inside' ? target : target.parentElement)}`;
+			commitCurrentState(msg).catch(e => console.error('CMS commit error:', e));
+		}
+	} else if (type === 'cms-move' && cms.draggedEl) {
+		const el = cms.draggedEl;
+		if (el !== target && !el.contains(target)) {
+			insertAtDropPosition(el, target, position);
+			const msg = `Move ${describeElement(el)} to ${describeElement(position === 'inside' ? target : target.parentElement)}`;
+			commitCurrentState(msg).catch(e => console.error('CMS commit error:', e));
+			selectElement(el);
+		}
+	}
+
+	cms.draggedEl = null;
+	cms.dropTarget = null;
+	cms.dropPosition = null;
+}
+
+function onDragEnd() {
+	clearDropIndicators();
+	cms.draggedEl = null;
+	cms.dropTarget = null;
+	cms.dropPosition = null;
+}
+
+function insertAtDropPosition(node, target, position) {
+	if (position === 'before') {
+		target.parentNode.insertBefore(node, target);
+	} else if (position === 'after') {
+		target.parentNode.insertBefore(node, target.nextSibling);
+	} else if (position === 'inside') {
+		target.appendChild(node);
+	}
+}
+
+function clearDropIndicators() {
+	for (const attr of ['data-cms-drop-before','data-cms-drop-after','data-cms-drop-inside']) {
+		document.querySelectorAll(`[${attr}]`).forEach(el => el.removeAttribute(attr));
+	}
+}
+
+// ============================================================
+// Edit Mode Entry / Exit
+// ============================================================
+window.enterEditMode = async function() {
+	if (cms.mode === 'edit') return;
+
+	const creds = await ensureCredentials();
+	if (!creds) return;
+
+	cms.mode = 'edit';
+	document.getElementById('cms-edit-styles').disabled = false;
+
+	createToolbar();
+	createFab();
+	createPalette();
+
+	document.addEventListener('click', onDocumentClick, true);
+	document.addEventListener('dblclick', onDocumentDblClick, true);
+	document.addEventListener('mousedown', onDocumentMouseDown, true);
+	document.addEventListener('keydown', onKeyDown, true);
+	document.addEventListener('dragover', onDocumentDragOver);
+	document.addEventListener('drop', onDocumentDrop);
+	cms.scrollHandler = onScroll;
+	window.addEventListener('scroll', cms.scrollHandler, true);
+	window.addEventListener('resize', cms.scrollHandler);
+
+	gitInit().catch(e => console.error('CMS git init error:', e));
+};
+
+window.exitEditMode = async function(action) {
+	if (cms.mode !== 'edit') return;
+
+	if (cms.editingEl) finalizeEdit(cms.editingEl);
+	deselectElement();
+
+	if (action === 'discard') {
+		if (cms.git.ready && cms.git.historyStack.length > 0) {
+			try {
+				const oid = cms.git.historyStack[cms.git.historyStack.length - 1];
+				const content = await readFileFromCommit(oid, 'index.html');
+				replacePageContent(content);
+			} catch (e) { console.error('CMS discard error:', e); }
+		}
+	} else if (action === 'save') {
+		await commitCurrentState('Save page').catch(e => console.error('CMS commit error:', e));
+	} else if (action === 'publish') {
+		await commitCurrentState('Publish page').catch(e => console.error('CMS commit error:', e));
+		await gitPush();
+	}
+
+	document.querySelectorAll('[data-cms]').forEach(el => el.remove());
+
+	for (const attr of ['data-cms-selected','data-cms-editing','data-cms-drop-before','data-cms-drop-after','data-cms-drop-inside','contenteditable','draggable']) {
+		document.querySelectorAll(`[${attr}]`).forEach(el => el.removeAttribute(attr));
+	}
+
+	document.getElementById('cms-edit-styles').disabled = true;
+
+	document.removeEventListener('click', onDocumentClick, true);
+	document.removeEventListener('dblclick', onDocumentDblClick, true);
+	document.removeEventListener('mousedown', onDocumentMouseDown, true);
+	document.removeEventListener('keydown', onKeyDown, true);
+	document.removeEventListener('dragover', onDocumentDragOver);
+	document.removeEventListener('drop', onDocumentDrop);
+	if (cms.scrollHandler) {
+		window.removeEventListener('scroll', cms.scrollHandler, true);
+		window.removeEventListener('resize', cms.scrollHandler);
+	}
+
+	cms.toolbarEl = null;
+	cms.fabEl = null;
+	cms.paletteEl = null;
+	cms.classEditorEl = null;
+	cms.attrEditorEl = null;
+	cms.linkEditorEl = null;
+	cms.selectedEl = null;
+	cms.editingEl = null;
+	cms.dirty.clear();
+	cms.snapshots.clear();
+	cms.mode = 'view';
+};
+
+// Legacy alias for the existing trigger
+window.editPage = window.enterEditMode;
 </script>
